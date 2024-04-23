@@ -34,7 +34,10 @@ class ENV(Constants):
     IS_DEV_ENV = get_env('FLASK_ENV', 'production') == 'development'
     BUILD_VERSION = get_env('APP_VERSION_STRING', 'dev')
 
-    GPU_IDX = int(get_env('GPU_IDX', '-1'))
+    ###
+    #GPU_IDX = int(get_env('GPU_IDX', '-1'))
+    ####
+
     INTEL_OPTIMIZATION = get_env_bool('INTEL_OPTIMIZATION')
 
     RUN_MODE = get_env_bool('RUN_MODE', False)

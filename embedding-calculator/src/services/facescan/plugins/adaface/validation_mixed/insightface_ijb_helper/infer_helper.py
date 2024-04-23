@@ -3,6 +3,10 @@ import os
 import torch
 from tqdm import tqdm
 from .dataloader import prepare_dataloader
+from src.constants import ENV
+
+device = ENV.DEVICE
+
 
 def l2_norm(input, axis=1):
     """l2 normalize
@@ -83,7 +87,7 @@ def infer_images(model, img_root, landmark_list_path, batch_size, use_flip_test,
     with torch.no_grad():
         for images, idx in tqdm(dataloader):
 
-            feature = model(images.to("cuda:0"))
+            feature = model(images.to(device))
             if isinstance(feature, tuple):
                 feature, norm = feature
             else:
@@ -92,7 +96,7 @@ def infer_images(model, img_root, landmark_list_path, batch_size, use_flip_test,
             if use_flip_test:
                 # infer flipped image and fuse to make a single feature
                 fliped_images = torch.flip(images, dims=[3])
-                flipped_feature = model(fliped_images.to("cuda:0"))
+                flipped_feature = model(fliped_images.to(device))
                 if isinstance(flipped_feature, tuple):
                     flipped_feature, flipped_norm = flipped_feature
                 else:

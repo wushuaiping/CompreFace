@@ -107,17 +107,17 @@ services:
       - NVIDIA_VISIBLE_DEVICES=0
       - TZ=utc
       - DEBIAN_FRONTEND=noninteractive
-      - DEVICE=cuda:0
+      - DEVICE=cpu
     healthcheck:
       test: curl --fail http://localhost:3000/healthcheck || exit 1
       interval: 10s
       retries: 0
       start_period: 0s
       timeout: 1s
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #        - driver: nvidia
+    #          count: 1
+    #          capabilities: [ gpu ]

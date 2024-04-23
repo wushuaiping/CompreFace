@@ -8,6 +8,10 @@ import src.services.facescan.plugins.adaface.validation_lq.tinyface_helper as ti
 import sys, os
 sys.path.insert(0, os.path.dirname(os.getcwd()))
 import src.services.facescan.plugins.adaface.net as net
+from src.constants import ENV
+
+device = ENV.DEVICE
+
 
 
 def str2bool(v):
@@ -72,7 +76,7 @@ def infer(model, dataloader, use_flip_test, fusion_method):
     with torch.no_grad():
         for images, idx in tqdm(dataloader):
 
-            feature = model(images.to("cuda:0"))
+            feature = model(images.to(device))
             if isinstance(feature, tuple):
                 feature, norm = feature
             else:
@@ -80,7 +84,7 @@ def infer(model, dataloader, use_flip_test, fusion_method):
 
             if use_flip_test:
                 fliped_images = torch.flip(images, dims=[3])
-                flipped_feature = model(fliped_images.to("cuda:0"))
+                flipped_feature = model(fliped_images.to(device))
                 if isinstance(flipped_feature, tuple):
                     flipped_feature, flipped_norm = flipped_feature
                 else:
@@ -139,7 +143,7 @@ if __name__ == '__main__':
     assert args.model_name in adaface_models
     # load model
     model = load_pretrained_model(args.model_name)
-    model.to('cuda:{}'.format(args.gpu))
+    model.to(device)
 
     tinyface_test = tinyface_helper.TinyFaceTest(tinyface_root=args.data_root,
                                                  alignment_dir_name='aligned_pad_0.1_pad_high')

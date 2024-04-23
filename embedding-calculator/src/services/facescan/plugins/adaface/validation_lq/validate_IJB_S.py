@@ -8,6 +8,9 @@ import src.services.facescan.plugins.adaface.validation_lq.evaluate_helper as ev
 import sys, os
 sys.path.insert(0, os.path.dirname(os.getcwd()))
 import src.services.facescan.plugins.adaface.net as net
+from src.constants import ENV
+
+device = ENV.DEVICE
 
 
 def str2bool(v):
@@ -48,7 +51,7 @@ if __name__ == '__main__':
 
     # load model
     model = load_pretrained_model(args.model_name)
-    model.to('cuda:{}'.format(args.gpu))
+    model.to(device)
 
     # make result save root
     save_root = './result/IJBS/{}'.format(args.model_name)
@@ -79,7 +82,7 @@ if __name__ == '__main__':
                 prev_max_idx = idx.max().item()  # order shifting by dataloader checking
                 if iter_idx % 100 == 0:
                     print(f"{iter_idx} / {len(dataloader)} done")
-                feature = model(img.to("cuda:0"))
+                feature = model(img.to(device))
 
                 if isinstance(feature, tuple) and len(feature) == 2:
                     feature, norm = feature
