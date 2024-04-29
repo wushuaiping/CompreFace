@@ -29,7 +29,7 @@ from src.services.imgtools.test.files import IMG_DIR
 from src.services.facescan.plugins.adaface.inference import *
 from src.services.facescan.plugins.pytorch_detector.detect import retina_detector
 import base64
-#from src.constants import SKIPPED_PLUGINS
+from src.constants import SKIPPED_PLUGINS
 import json
 
 
