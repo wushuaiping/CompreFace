@@ -18,18 +18,18 @@ from flask.json import jsonify
 from werkzeug.exceptions import BadRequest
 
 from src.constants import ENV
-from src.exceptions import NoFaceFoundError
-from src.services.facescan.plugins import base, managers
-from src.services.facescan.scanner.facescanners import scanner
+#from src.exceptions import NoFaceFoundError
+#from src.services.facescan.plugins import base, managers
+#from src.services.facescan.scanner.facescanners import scanner
 from src.services.flask_.constants import ARG
-from src.services.flask_.needs_attached_file import needs_attached_file
-from src.services.imgtools.read_img import read_img
+#from src.services.flask_.needs_attached_file import needs_attached_file
+#from src.services.imgtools.read_img import read_img
 from src.services.utils.pyutils import Constants
 from src.services.imgtools.test.files import IMG_DIR
 from src.services.facescan.plugins.adaface.inference import *
 from src.services.facescan.plugins.pytorch_detector.detect import retina_detector
 import base64
-from src.constants import SKIPPED_PLUGINS
+#from src.constants import SKIPPED_PLUGINS
 import json
 
 
