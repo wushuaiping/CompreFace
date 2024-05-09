@@ -27,7 +27,7 @@ imageio==2.31.1
 importlib-metadata==6.8.0
 importlib-resources==6.0.1
 iniconfig==2.0.0
-insightface==0.1.5
+#insightface==0.1.5
 itsdangerous==2.0.1
 Jinja2==3.0.3
 jsonschema==4.17.3
@@ -63,12 +63,12 @@ setuptools==57.5.0
 six==1.16.0
 snowballstemmer==2.2.0
 soupsieve==2.4.1
-tensorboard==2.2.2
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.2.0
-tensorflow-estimator==2.2.0
+#tensorboard==2.2.2
+#tensorboard-plugin-wit==1.8.1
+#tensorflow==2.2.0
+#tensorflow-estimator==2.2.0
 termcolor==2.3.0
-tf-slim==1.1.0
+#tf-slim==1.1.0
 threadpoolctl==3.2.0
 tifffile==2023.7.10
 tomli==2.0.1
