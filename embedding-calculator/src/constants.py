@@ -46,11 +46,11 @@ class ENV(Constants):
     PYTORCH_MODE = get_env_bool('PYTORCH_MODE', True)  # True or False
     DEVICE = get_env('DEVICE', 'cpu') # 'cpu' or 'cuda:0'
     RECOGNITION_MODEL = get_env('RECOGNITION_MODEL', 'ir_50')
-    RECOGNITION_MODEL_PATH = get_env('RECOGNITION_MODEL_PATH', 'services/facescan/plugins/adaface/pretrained/adaface_ir50_ms1mv2.ckpt')
+    RECOGNITION_MODEL_PATH = get_env('RECOGNITION_MODEL_PATH', 'src/services/facescan/plugins/adaface/pretrained/adaface_ir50_ms1mv2.ckpt')
     DETECTOR_NAME = get_env('DETECTOR_NAME', 'retinaface') # mtcnn or retinaface
     DETECTOR_NETWORK_NAME = get_env('DETECTOR_NETWORK_NAME', 'mobile0.25') # 'mobile0.25' or 'resnet50'
-    DETECTOR_MODEL_PATH = get_env('DETECTOR_MODEL_PATH', 'services/facescan/plugins/pytorch_detector/weights/mobilenet0.25_Final.pth')
-    PRETRAINED_MODEL_PATH = get_env('PRETRAINED_MODEL_PATH', 'services/facescan/plugins/pytorch_detector/weights/mobilenetV1X0.25_pretrain.tar')
+    DETECTOR_MODEL_PATH = get_env('DETECTOR_MODEL_PATH', 'src/services/facescan/plugins/pytorch_detector/weights/mobilenet0.25_Final.pth')
+    PRETRAINED_MODEL_PATH = get_env('PRETRAINED_MODEL_PATH', 'src/services/facescan/plugins/pytorch_detector/weights/mobilenetV1X0.25_pretrain.tar')
 
 LOGGING_LEVEL = logging._nameToLevel[ENV.LOGGING_LEVEL_NAME]
 ENV_MAIN = ENV

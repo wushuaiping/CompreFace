@@ -64,13 +64,14 @@ def endpoints(app):
     
     @app.route('/status')
     def status_get():
-        available_plugins = {p.slug: str(p)
-                             for p in managers.plugin_manager.plugins}
-        calculator = managers.plugin_manager.calculator
+        available_plugins = {"calculator": ENV.CALCULATION_PLUGIN,
+                             "detector": ENV.FACE_DETECTION_PLUGIN,
+                             "landmarks": ENV.FACE_DETECTION_PLUGIN,
+}
         return jsonify(
             status='OK', build_version=ENV.BUILD_VERSION,
-            calculator_version=str(calculator),
-            similarity_coefficients=calculator.ml_model.similarity_coefficients,
+            calculator_version=ENV.CALCULATION_PLUGIN,
+            similarity_coefficients=[1.26538905, 5.552089201],
             available_plugins=available_plugins
         )
 
