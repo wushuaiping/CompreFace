@@ -11,16 +11,22 @@ RUN apt-get update && apt-get install -y build-essential cmake git wget unzip \
         libaec-dev libblosc-dev libbrotli-dev libbz2-dev libgif-dev libopenjp2-7-dev \
         liblcms2-dev libcharls-dev libjxr-dev liblz4-dev libcfitsio-dev libpcre3 libpcre3-dev \
 	    libsnappy-dev libwebp-dev libzopfli-dev libzstd-dev \
-        && rm -rf /var/lib/apt/lists/*
+        && apt-get update && \
+           apt-get install -y software-properties-common && \
+           add-apt-repository -y ppa:deadsnakes/ppa && \
+           apt-get update && \
+           apt-get install -y python3.8 python3.8-dev python3-pip python3.8-distutils &&\
+           apt-get autoremove && \
+        rm -rf /var/lib/apt/lists/*
 
 
 
 # Update package lists and install necessary dependencies
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt-get update && \
-    apt-get install -y python3.8 python3.8-dev python3-pip python3.8-distutils
+#RUN apt-get update && \
+#    apt-get install -y software-properties-common && \
+#    add-apt-repository -y ppa:deadsnakes/ppa && \
+#    apt-get update && \
+#    apt-get install -y python3.8 python3.8-dev python3-pip python3.8-distutils
 
 # Set symbolic links for python and pip to use Python 3.8 by default
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
@@ -70,8 +76,8 @@ COPY requirements.txt .
 # which is not compatible with Python 3.7
 
 
-RUN pip --no-cache-dir install $(grep ^numpy requirements.txt)
-RUN pip --no-cache-dir install -r requirements.txt
+RUN pip --no-cache-dir install $(grep ^numpy requirements.txt) && \
+    pip --no-cache-dir install -r requirements.txt
 
 ARG BE_VERSION
 ARG APP_VERSION_STRING
