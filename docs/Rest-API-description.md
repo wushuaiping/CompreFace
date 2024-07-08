@@ -351,10 +351,16 @@ curl -X POST "http://localhost:8000/api/v1/recognition/faces/delete" \
   
 Response body on success:
 ``` 
-{
-  "image_id": <image_id>,
-  "subject": <subject>
-}
+[ {
+  "image_id" : "<image_id1>",
+  "subject" : "<subject>"
+}, {
+  "image_id" : "<image_id2>",
+  "subject" : "<subject>"
+}, {
+  "image_id" : "<image_idN>",
+  "subject" : "<subject>"
+} ]
 ``` 
 
 | Element         | Description                                               | Type   | 
